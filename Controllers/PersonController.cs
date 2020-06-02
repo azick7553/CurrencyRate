@@ -1,6 +1,8 @@
 using CurrencyRate.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Linq;
+
 namespace CurrencyRate.Controllers
 {
     [ApiController]
@@ -20,6 +22,11 @@ namespace CurrencyRate.Controllers
         public ActionResult<List<Person>> GetPersons()
         {
             return PersonList;
+        }
+        [HttpGet("{id}")]
+        public ActionResult<Person> GetPersonsById(int id)
+        {
+            return PersonList.Where(p => p.Id == id).FirstOrDefault();
         }
     }
 }
